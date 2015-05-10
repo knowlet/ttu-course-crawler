@@ -15,9 +15,13 @@
     "crawler"
   ],
   "author": "knowlet",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/knowlet/ttu-course-crawler/issues"
   },
-  "homepage": "https://github.com/knowlet/ttu-course-crawler"
+  "homepage": "https://github.com/knowlet/ttu-course-crawler",
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "request": "^2.55.0"
+  }
 }
