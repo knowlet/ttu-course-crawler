@@ -1,0 +1,23 @@
+{
+  "name": "ttu-course-crawler",
+  "version": "1.0.0",
+  "description": "Get course information from ttu web site to json format.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/knowlet/ttu-course-crawler.git"
+  },
+  "keywords": [
+    "ttu",
+    "crawler"
+  ],
+  "author": "knowlet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/knowlet/ttu-course-crawler/issues"
+  },
+  "homepage": "https://github.com/knowlet/ttu-course-crawler"
+}
