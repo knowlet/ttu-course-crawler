@@ -32,7 +32,9 @@ var courseURL = 'http://selquery.ttu.edu.tw/Main/ListClass.php';
     }
   });  
 })(function (Course) {
+  var dpCount = 0, clCount = 0;
   Course.forEach(function (SelDp, i, Dp) {
+    clCount += SelDp.class.length;
     SelDp.class.forEach(function (SelCl, j, Cl) {
       request.post({
         url: courseURL,
@@ -53,9 +55,9 @@ var courseURL = 'http://selquery.ttu.edu.tw/Main/ListClass.php';
           $(".cistab tr[bgcolor]").each(function (i, element) {
             var children = $(element).children();
             var cistab = {
-              "cNum": $($(children).get(0)).clone().children().remove().end().text(),
+              "cNum": $($(children).get(0)).clone().children().remove().end().text().trim(),
               "cName": {
-                "name": $($(children).get(1)).text(),
+                "name": $($(children).get(1)).text().trim(),
                 "href": $($(children).get(1).firstChild).attr("href")
               },
               "teaName": $($(children).get(2)).text(),
@@ -65,9 +67,7 @@ var courseURL = 'http://selquery.ttu.edu.tw/Main/ListClass.php';
             res.push(cistab);
           });
           SelCl.course = res;
-          // console.log('i: ' + i + ' j: ' + j + ' dp: ' + Dp.length + ' cl: ' + Cl.length);
-          if ((i == Dp.length - 1) && (j == Cl.length - 1))
-            // console.log('hello');
+          if (++dpCount == clCount)
             console.log(JSON.stringify(Course));
         }
       });
