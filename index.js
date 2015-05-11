@@ -66,8 +66,12 @@ var courseURL = 'http://selquery.ttu.edu.tw/Main/ListClass.php';
             res.push(cistab);
           });
           SelCl.course = res;
-          if (++dpCount == clCount)
+          if (++dpCount == clCount) {
+            Course.sort(function (a, b) {
+              return a.value - b.value;
+            })
             console.log(JSON.stringify(Course));
+          }
         }
       });
     });
