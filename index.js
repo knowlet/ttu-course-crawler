@@ -2,8 +2,8 @@ var request = require('request');
 var cheerio = require('cheerio');
 var courseURL = 'http://selquery.ttu.edu.tw/Main/ListClass.php';
 (function (callback){
-  request(courseURL, function (error, response, html) {
-    if (!error && response.statusCode == 200) {
+  request(courseURL, function (err, response, html) {
+    if (!err && response.statusCode == 200) {
       var SelDp = [];
       var $ = cheerio.load(html);
       var length = $("[name='SelDp']").children().length;
@@ -11,11 +11,10 @@ var courseURL = 'http://selquery.ttu.edu.tw/Main/ListClass.php';
         var course = {};
         course.name = $(element).text();
         course.value = $(element).attr("value");
-        request(courseURL + "?SelDp=" + course.value, function (error, response, html) {
-          if (!error && response.statusCode == 200) {
+        request(courseURL + "?SelDp=" + course.value, function (err, response, html) {
+          if (!err && response.statusCode == 200) {
             var SelCl = [];
             var $ = cheerio.load(html);
-
             $("[name='SelCl'] option").each(function (i, element) {
               var tmp = {};
               tmp.class = $(element).text();
@@ -33,9 +32,9 @@ var courseURL = 'http://selquery.ttu.edu.tw/Main/ListClass.php';
   });  
 })(function (Course) {
   var dpCount = 0, clCount = 0;
-  Course.forEach(function (SelDp, i, Dp) {
+  Course.forEach(function (SelDp) {
     clCount += SelDp.class.length;
-    SelDp.class.forEach(function (SelCl, j, Cl) {
+    SelDp.class.forEach(function (SelCl) {
       request.post({
         url: courseURL,
         form: {
@@ -51,7 +50,6 @@ var courseURL = 'http://selquery.ttu.edu.tw/Main/ListClass.php';
         if (!err && response.statusCode == 200) {
           var res = [];
           var $ = cheerio.load(html);
-          
           $(".cistab tr[bgcolor]").each(function (i, element) {
             var children = $(element).children();
             var cistab = {
