@@ -61,6 +61,7 @@ var courseURL = 'http://selquery.ttu.edu.tw/Main/ListClass.php';
                 "href": $($(children).get(1).firstChild).attr("href")
               },
               "teaName": $($(children).get(2)).text(),
+              "essential": $($(children).get(3)).text().trim(),
               "credit": $($(children).get(4)).text(),
               "limit": $($(children).get(5)).text().split("/").pop()
             }
