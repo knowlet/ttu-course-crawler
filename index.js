@@ -28,7 +28,7 @@ var courseURL = 'http://selquery.ttu.edu.tw/Main/ListClass.php';
           }
         });
       });
-    }
+    } else console.log("status: " + response.statusCode + "\n" + err);
   });  
 })(function (Course) {
   var dpCount = 0, clCount = 0;
@@ -71,7 +71,7 @@ var courseURL = 'http://selquery.ttu.edu.tw/Main/ListClass.php';
               return a.value - b.value;
             })
             console.log(JSON.stringify(Course));
-          }
+          } else console.log("status: " + response.statusCode + "\n" + err);
         }
       });
     });
