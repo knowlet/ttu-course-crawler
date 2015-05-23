@@ -71,8 +71,8 @@ var courseURL = 'http://selquery.ttu.edu.tw/Main/ListClass.php';
               return a.value - b.value;
             })
             console.log(JSON.stringify(Course));
-          } else console.log("status: " + response.statusCode + "\n" + err);
-        }
+          }
+        } else console.log("status: " + response.statusCode + "\n" + err);
       });
     });
   });
